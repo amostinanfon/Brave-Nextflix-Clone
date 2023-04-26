@@ -1,15 +1,32 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
+import { NextPageContext } from "next";
+import { getSession } from "next-auth/react";
 import Input from "@/components/input";
 import { signIn } from 'next-auth/react';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
+}
 const Auth = () => {
-  const router = useRouter();
-  
+  const router = useRouter();  
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -28,8 +45,7 @@ const login = useCallback(async () => {
       redirect: false,
       callbackUrl: '/'
      });
-
-     router.push('/');
+     router.push('/profiles');
   } catch (error) {
     console.log(error);
   }
@@ -42,6 +58,7 @@ const register = useCallback(async () => {
       name,
       password
     });
+
     login();
   }catch (error) {
     console.log(error);
@@ -88,7 +105,7 @@ const register = useCallback(async () => {
                  </button>
                  <div className="flex flex-row items-center gap-4 mt-8 justify-center">
                   <div
-                  onClick={() => signIn('google', { callbackUrl: '/'})}
+                  onClick={() => signIn('google', { callbackUrl: '/profiles'})}
                   className="
                   w-10
                   h-10
@@ -105,7 +122,7 @@ const register = useCallback(async () => {
                     <FcGoogle size={30} />
                   </div>
                   <div
-                  onClick={() => signIn('github', { callbackUrl: '/'})}
+                  onClick={() => signIn('github', { callbackUrl: '/profiles'})}
                   className="
                   w-10
                   h-10
