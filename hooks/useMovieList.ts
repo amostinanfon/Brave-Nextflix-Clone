@@ -13,6 +13,8 @@ return {
     error,
     isLoading
 }
+
+console.log(data);
 };
 
 export default useMovieList
