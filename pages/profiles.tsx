@@ -149,4 +149,8 @@ const App = () => {
   );
 }
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> b3f0cee (Netflix-Clone Need Solve It)
