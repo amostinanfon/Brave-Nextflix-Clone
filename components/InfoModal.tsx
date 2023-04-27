@@ -71,7 +71,9 @@ const InfoModal: React.FC<useInfoModalProps> = ({ visible, onClose }) => {
           drop-shadow-md
          `}>
 
-         <div className="relative-h-96">
+            {/* Yoy were having a problem here !!! */}
+
+         <div className="relative h-96"> {/* */}
             <video 
             className="
             w-full

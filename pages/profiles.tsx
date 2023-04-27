@@ -129,7 +129,6 @@ const App = () => {
   const router = useRouter();
   const { data: currentUser } = useCurrentUser();
 
-  console.log(currentUser)
 
   const selectProfile = useCallback(() => {
     router.push('/');

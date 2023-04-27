@@ -124,9 +124,9 @@ const MovieCard: React.FC<MovieCardProps> = ({
            items-center 
            transition 
            hover:border-neutral-300">
-        <BiChevronDown 
-            size={30}
-            className="text-white group-hover/item:text-neutral-300" />
+          <BiChevronDown 
+              size={30}
+              className="text-white group-hover/item:text-neutral-300" />
           </div>
          </div>
 

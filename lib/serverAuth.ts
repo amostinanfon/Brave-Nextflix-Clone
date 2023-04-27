@@ -21,7 +21,6 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
   return { currentUser };
-  console.log(currentUser)
 };
 
 export default serverAuth;
